@@ -13,7 +13,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full  bg-black backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 w-full bg-black border">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
