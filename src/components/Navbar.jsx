@@ -2,9 +2,20 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { signOut, useSession } from "@/lib/auth-client";
+import { Button } from "@heroui/react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {data:session, isPending} =useSession();
+  // console.log("session data in Navbar:", session, "is pending ", isPending)
+
+  const user = session?.user;
+
+  const handleSignOut =async()=>{
+    await signOut()
+  }
+
 
   const links = [
     { label: "Browse Jobs", href: "/jobs" },
@@ -48,12 +59,17 @@ export default function Navbar() {
 
           {/* Desktop Actions */}
           <div className="hidden items-center gap-3 lg:flex">
-            <Link
+            {user ?  
+           <>
+           Hi, {user.name}!
+           <Button onClick={handleSignOut} variant="ghost" >SignOut</Button>
+           </>
+           :<Link
               href={'/auth/signin'}
               className="rounded-lg px-4 py-2 text-sm font-medium text-slate-300 transition hover:text-white"
             >
               Sign In
-            </Link>
+            </Link>}
 
             <Link
               href={'/auth/signup'}
@@ -127,12 +143,17 @@ export default function Navbar() {
           <div className="block lg:hidden my-4 h-px w-full bg-white/20" />
 
           <div className="mt-6 flex flex-col gap-3">
-            <Link
+           {user ?  
+           <>
+           Hi, {user.name}!
+           <Button onClick={handleSignOut}  variant="ghost" >SignOut</Button>
+           </>
+           : <Link
               href={'/auth/signin'}
               className="rounded-xl border border-white/10 px-4 py-3 text-center text-slate-300"
             >
               Sign In
-            </Link>
+            </Link>}
 
             <Link
               href={'/auth/signup'}

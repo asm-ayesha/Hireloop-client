@@ -113,7 +113,7 @@ export default function SignUpPage() {
         setSuccess("Account created successfully! Redirecting to sign in...");
         setForm({ name: "", email: "", password: "" });
         setTimeout(() => {
-          window.location.href = "/auth/signin";
+          window.location.href = "/";
         }, 2000);
       }
     } catch (err) {
