@@ -49,14 +49,14 @@ export default function Navbar() {
           {/* Desktop Actions */}
           <div className="hidden items-center gap-3 lg:flex">
             <Link
-              href="/login"
+              href={'/auth/signin'}
               className="rounded-lg px-4 py-2 text-sm font-medium text-slate-300 transition hover:text-white"
             >
               Sign In
             </Link>
 
             <Link
-              href="/register"
+              href={'/auth/signup'}
               className="rounded-xl bg-violet-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-violet-700"
             >
               Get Started
@@ -128,14 +128,14 @@ export default function Navbar() {
 
           <div className="mt-6 flex flex-col gap-3">
             <Link
-              href="/login"
+              href={'/auth/signin'}
               className="rounded-xl border border-white/10 px-4 py-3 text-center text-slate-300"
             >
               Sign In
             </Link>
 
             <Link
-              href="/register"
+              href={'/auth/signup'}
               className="rounded-xl bg-violet-600 px-4 py-3 text-center font-medium text-white"
             >
               Get Started

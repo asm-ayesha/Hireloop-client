@@ -113,7 +113,7 @@ export default function SignUpPage() {
         setSuccess("Account created successfully! Redirecting to sign in...");
         setForm({ name: "", email: "", password: "" });
         setTimeout(() => {
-          window.location.href = "/sign-in";
+          window.location.href = "/auth/signin";
         }, 2000);
       }
     } catch (err) {
@@ -136,7 +136,7 @@ export default function SignUpPage() {
 
         {/* Back to sign in */}
         <Link
-          href="/sign-in"
+          href={'/auth/signin'}
           className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-white/70 transition-colors duration-200 mb-8 group"
         >
           <span className="group-hover:-translate-x-0.5 transition-transform duration-200">
@@ -313,7 +313,7 @@ export default function SignUpPage() {
           <p className="text-center text-sm text-white/30 mt-6">
             Already have an account?{" "}
             <Link
-              href="/sign-in"
+              href={'/auth/signin'}
               className="text-[#3b82f6] hover:text-[#60a5fa] font-medium transition-colors duration-200"
             >
               Sign In
