@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { authClient, signUp } from "@/lib/auth-client";
+import { Description, Label, Radio, RadioGroup } from "@heroui/react";
 
 // Gravity Icons — inline SVG
 const UserIcon = () => (
@@ -75,6 +76,7 @@ export default function SignUpPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [role, setRole] = useState("seeker")
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -105,13 +107,14 @@ export default function SignUpPage() {
         name: form.name,
         email: form.email,
         password: form.password,
+        role: role,
       });
 
       if (authError) {
         setError(authError.message || "Something went wrong. Please try again.");
       } else {
         setSuccess("Account created successfully! Redirecting to sign in...");
-        setForm({ name: "", email: "", password: "" });
+        setForm({ name: "", email: "", password: "", });
         setTimeout(() => {
           window.location.href = "/";
         }, 2000);
@@ -291,6 +294,47 @@ export default function SignUpPage() {
                 </div>
               )} */}
             </div>
+
+            {/* Role Selection */}
+
+
+            <div className="flex flex-col gap-4">
+              <Label>Subscription plan</Label>
+              <RadioGroup defaultValue="seeker" name="role" onChange={value=> setRole(value)} orientation="horizontal">
+                <Radio Sel value="seeker">
+                  <Radio.Control>
+                    <Radio.Indicator />
+                  </Radio.Control>
+                  <Radio.Content>
+                    <Label>Job Seeker</Label>
+                    
+                  </Radio.Content>
+                </Radio>
+                <Radio value="recruiter">
+                  <Radio.Control>
+                    <Radio.Indicator />
+                  </Radio.Control>
+                  <Radio.Content>
+                    <Label>Recruiter</Label>
+                    
+                  </Radio.Content>
+                </Radio>
+                
+              </RadioGroup>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             {/* Submit */}
             <button
