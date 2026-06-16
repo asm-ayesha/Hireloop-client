@@ -46,8 +46,9 @@ const RecruiterDashboardHomePage = () => {
     const user = session?.user
 
     return (
-        <div>
-            <h2 className='text-4xl font-bold'>Wellcome back, {user?.name}</h2>
+        <div className='px-10'>
+            <h2 className='text-4xl font-bold py-10'>Wellcome back, {user?.name}</h2>
+
             <DashboardStats stats={recruiterStats}  ></DashboardStats>
         </div>
     );
