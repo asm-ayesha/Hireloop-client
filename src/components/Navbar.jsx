@@ -7,8 +7,8 @@ import { Button } from "@heroui/react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const {data:session, isPending} =useSession();
-  console.log("session data in Navbar:", session, "is pending ", isPending)
+  const {data:session }=useSession();
+  
 
   const user = session?.user;
 
